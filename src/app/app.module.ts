@@ -16,7 +16,6 @@ import { TodoModule } from './modules/todo/todo.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    TodoModule,
     StoreModule.forRoot({}, {
       runtimeChecks: {
         strictStateImmutability: true,
