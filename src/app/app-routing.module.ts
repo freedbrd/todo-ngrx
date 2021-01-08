@@ -8,6 +8,10 @@ const routes: Routes = [
     loadChildren: () => import('./modules/todo/todo.module').then(
       m => m.TodoModule),
   },
+  {
+    path: '**',
+    redirectTo: 'todo'
+  }
 ];
 
 @NgModule({
