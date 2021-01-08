@@ -20,7 +20,7 @@ export const todoReducer = (state = initialState, action: TodoActions) => {
           ...state.todoList,
           {
             id: new Date().getTime(),
-            name: action.payload,
+            name: action?.payload?.name,
             completed: false,
           },
         ],

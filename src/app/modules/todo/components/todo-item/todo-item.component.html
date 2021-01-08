@@ -1,0 +1,11 @@
+<ul>
+  <li *ngFor="let todo of todoList">
+    <label for="check">
+      <input id="check" type="checkbox" [checked]="todo?.completed">
+    </label>
+    <span [class.completed]="todo?.completed">
+      {{todo?.name}}
+    </span>
+    <button>Delete</button>
+  </li>
+</ul>

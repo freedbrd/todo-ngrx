@@ -6,9 +6,10 @@ import { TodoComponent } from './todo.component';
 import { RouterModule } from '@angular/router';
 import { TodoFormComponent } from './components/todo-form/todo-form.component';
 import { SharedModule } from '../shared/shared.module';
+import { TodoItemComponent } from './components/todo-item/todo-item.component';
 
 @NgModule({
-  declarations: [TodoComponent, TodoFormComponent],
+  declarations: [TodoComponent, TodoFormComponent, TodoItemComponent],
   imports: [
     CommonModule,
     SharedModule,
