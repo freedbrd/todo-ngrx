@@ -7,7 +7,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-import { TodoModule } from './modules/todo/todo.module';
+import { SharedModule } from './modules/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +16,7 @@ import { TodoModule } from './modules/todo/todo.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    SharedModule,
     StoreModule.forRoot({}, {
       runtimeChecks: {
         strictStateImmutability: true,

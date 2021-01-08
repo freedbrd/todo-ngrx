@@ -4,11 +4,14 @@ import { StoreModule } from '@ngrx/store';
 import { TODO_REDUCER_NODE, todoReducer } from './store/todo/todo.reducer';
 import { TodoComponent } from './todo.component';
 import { RouterModule } from '@angular/router';
+import { TodoFormComponent } from './components/todo-form/todo-form.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [TodoComponent],
+  declarations: [TodoComponent, TodoFormComponent],
   imports: [
     CommonModule,
+    SharedModule,
     StoreModule.forFeature(TODO_REDUCER_NODE, todoReducer),
     RouterModule.forChild([
       {path: '', component: TodoComponent},
