@@ -6,6 +6,6 @@
     <span [class.completed]="todo?.completed">
       {{todo?.name}}
     </span>
-    <button>Delete</button>
+    <button (click)="onDelete(todo?.id)">Delete</button>
   </li>
 </ul>
