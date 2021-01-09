@@ -13,6 +13,9 @@ export class TodoItemComponent implements OnInit {
   @Output()
   delete = new EventEmitter<number>();
 
+  @Output()
+  toggle = new EventEmitter<number>();
+
   constructor() {
   }
 
@@ -21,5 +24,11 @@ export class TodoItemComponent implements OnInit {
 
   onDelete(id: number): void {
     this.delete.emit(id);
+  }
+
+  onToggle(event: MouseEvent, id: number): void {
+    event.preventDefault();
+
+    this.toggle.emit(id);
   }
 }

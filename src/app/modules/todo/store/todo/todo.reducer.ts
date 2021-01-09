@@ -29,8 +29,17 @@ export const todoReducer = (state = initialState, action: TodoActions) => {
       return {
         ...state,
         todoList: [
-          ...state.todoList.filter(item => item.id !== action.payload?.id)
-        ]
+          ...state.todoList.filter(item => item.id !== action.payload?.id),
+        ],
+      };
+    case todoActionsType.toggle:
+      return {
+        ...state,
+        todoList: state.todoList.map(item => {
+          return item.id === action.payload.id
+            ? {...item, completed: !item.completed}
+            : item;
+        }),
       };
     default: {
       return state;
