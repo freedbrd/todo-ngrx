@@ -1,11 +1,24 @@
 <ul>
   <li *ngFor="let todo of todoList">
     <label for="check">
-      <input id="check" type="checkbox" [checked]="todo?.completed" (click)="onToggle($event, todo?.id)">
+      <input id="check"
+             type="checkbox"
+             [checked]="todo?.completed"
+             (click)="onToggle($event, todo?.id)">
     </label>
-    <span [class.completed]="todo?.completed">
+    <span *ngIf="currentTodoId !== todo?.id"
+          (click)="editName(todo)"
+          [class.completed]="todo?.completed">
       {{todo?.name}}
     </span>
+    <ng-container *ngIf="currentTodoId === todo?.id">
+      <form (ngSubmit)="save()">
+        <input [formControl]="todoControl"
+               type="text">
+        <span (click)="currentTodoId = null"
+              class="close">&times;</span>
+      </form>
+    </ng-container>
     <button (click)="onDelete(todo?.id)">Delete</button>
   </li>
 </ul>

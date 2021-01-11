@@ -41,6 +41,15 @@ export const todoReducer = (state = initialState, action: TodoActions) => {
             : item;
         }),
       };
+    case todoActionsType.edit:
+      return {
+        ...state,
+        todoList: state.todoList.map(item => {
+          return item.id === action.payload.id
+            ? {...item, name: action.payload.name}
+            : item;
+        }),
+      };
     default: {
       return state;
     }

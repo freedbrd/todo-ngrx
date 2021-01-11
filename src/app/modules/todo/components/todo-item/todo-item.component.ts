@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../../models/todo.model';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-todo-item',
@@ -16,6 +17,13 @@ export class TodoItemComponent implements OnInit {
   @Output()
   toggle = new EventEmitter<number>();
 
+  @Output()
+  edit = new EventEmitter<{name: string, id: number}>();
+
+  currentTodoId: any;
+
+  todoControl = new FormControl('', Validators.required);
+
   constructor() {
   }
 
@@ -30,5 +38,22 @@ export class TodoItemComponent implements OnInit {
     event.preventDefault();
 
     this.toggle.emit(id);
+  }
+
+  editName(todo: Todo): void {
+    this.currentTodoId = todo.id;
+    this.todoControl.patchValue(todo.name);
+  }
+
+  save(): void {
+    this.edit.emit(
+      {
+        name: this.todoControl.value,
+        id: this.currentTodoId
+      }
+    );
+
+    this.currentTodoId = null;
+    this.todoControl.reset();
   }
 }

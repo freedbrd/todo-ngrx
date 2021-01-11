@@ -3,7 +3,7 @@ import { select, Store } from '@ngrx/store';
 import { TodoState } from './store/todo/todo.reducer';
 import {
   TodoCreateAction,
-  TodoDeleteAction,
+  TodoDeleteAction, TodoEditAction,
   TodoToggleAction,
 } from './store/todo/todo.actions';
 import { Observable } from 'rxjs';
@@ -41,6 +41,13 @@ export class TodoComponent implements OnInit {
   }
 
   onToggle(id: number): void {
-    this.store$.dispatch(new TodoToggleAction({id}))
+    this.store$.dispatch(new TodoToggleAction({id}));
+  }
+
+  onEdit(event: {name: string, id: number}): void {
+    this.store$.dispatch(new TodoEditAction({
+      name: event.name,
+      id: event.id
+    }));
   }
 }
